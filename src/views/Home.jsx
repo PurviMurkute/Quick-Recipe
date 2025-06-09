@@ -1,14 +1,16 @@
 import { useState } from "react";
 import foodrecipeicon from "./../assets/foodrecipe-icon.png";
 import axios from "axios";
+import RecipeCard from "../components/RecipeCard";
+import Button from "../components/Button";
 
 const Home = () => {
   const [searchFood, setSearchFood] = useState();
+  const [recipe, setRecipe] = useState();
 
   const getFoodRecipe = async () => {
     const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchFood}`)
-
-    console.log(response.data.meals);
+    setRecipe(response.data.meals);
   }
 
   return (
@@ -30,9 +32,10 @@ const Home = () => {
           onChange={(e)=>{setSearchFood(e.target.value)}}
           className="w-1/3 border-2 border-teal-600 px-2 py-2 me-2 rounded-lg shadow-xl focus:outline-none"
         />
-        <button className="bg-teal-700 text-teal-50 font-medium px-4 py-2 border-none rounded-lg shadow-xl focus:outline-none hover:bg-teal-800" onClick={()=>{getFoodRecipe()}}>
-          Search
-        </button>
+        <Button btntext={"Search"} onClick={()=>{getFoodRecipe()}}/>
+      </div>
+      <div>
+        <RecipeCard detail={recipe}/>
       </div>
     </div>
   );
