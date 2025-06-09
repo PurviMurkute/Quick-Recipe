@@ -1,9 +1,9 @@
 import React from "react";
 
 const Button = ({ btntext, onClick, btnposition }) => {
-    const BUTTON_POSITION = {
-        center: "block mx-auto my-3"
-    }
+  const BUTTON_POSITION = {
+    center: "block mx-auto my-5",
+  };
   return (
     <div>
       <button
