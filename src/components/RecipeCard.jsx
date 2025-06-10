@@ -4,16 +4,16 @@ import chefimg from "./../assets/Chef-bro.png";
 import { Link } from "react-router";
 
 const RecipeCard = ({ detail }) => {
-  if (detail === undefined) {
+  if (!detail) {
     return <>
-    <img src={chefimg} alt="img" className="w-[400px] block mx-auto" />
-    <h3 className="font-bold text-2xl text-teal-700 text-center">Welcome! Search Recipes.</h3>
+    <img src={chefimg} alt="img" className="w-[300px] md:w-[400px] block mx-auto" />
+    <h3 className="font-bold text-lg md:text-2xl text-teal-700 text-center">Welcome! Search Recipes.</h3>
     </>;
   }
   if (detail.length === 0) {
     return (
       <>
-        <img src={chefimg} alt="img" className="w-[400px] block mx-auto" />
+        <img src={chefimg} alt="img" className="w-[420px] block mx-auto" />
         <h1 className="font-bold text-3xl text-teal-700 text-center">
           404 ERROR
         </h1>
@@ -24,7 +24,7 @@ const RecipeCard = ({ detail }) => {
     );
   }
   return (
-    <div className="flex justify-evenly flex-wrap my-10 mx-20">
+    <div className="flex justify-evenly flex-wrap md:my-10 m-5 md:mx-20">
       {detail.map((recipeItem, i) => {
         const { strMealThumb, strMeal, idMeal } = recipeItem;
         return (

@@ -15,11 +15,11 @@ const Home = () => {
 
   return (
     <div>
-      <h1 className="text-4xl font-bold bg-teal-700 text-teal-50 p-3">
+      <h1 className="text-2xl md:text-4xl font-bold bg-teal-700 text-teal-50 p-1 md:p-3">
         <img
           src={foodrecipeicon}
           alt="recipe-icon"
-          className="w-[80px] inline p-2"
+          className="w-[60px] md:w-[80px] inline p-2"
         />
         Quick Recipe
       </h1>
@@ -30,7 +30,7 @@ const Home = () => {
           placeholder="Enter Dish Name"
           value={searchFood}
           onChange={(e)=>{setSearchFood(e.target.value)}}
-          className="w-1/3 border-2 border-teal-600 px-2 py-2 me-2 rounded-lg shadow-xl focus:outline-none"
+          className="w-1/2 md:w-1/3 border-2 border-teal-600 px-2 py-1 md:py-2 me-2 rounded-lg shadow-xl focus:outline-none"
         />
         <Button btntext={"Search"} onClick={()=>{getFoodRecipe()}}/>
       </div>
