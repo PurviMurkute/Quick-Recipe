@@ -1,51 +1,26 @@
-import React from "react";
 import Button from "./Button";
-import chefimg from "./../assets/Chef-bro.png";
 import { Link } from "react-router";
 
-const RecipeCard = ({ detail }) => {
-  if (!detail) {
-    return <>
-    <img src={chefimg} alt="img" className="w-[300px] md:w-[400px] block mx-auto" />
-    <h3 className="font-bold text-lg md:text-2xl text-teal-700 text-center">Welcome! Search Recipes.</h3>
-    </>;
-  }
-  if (detail.length === 0) {
-    return (
-      <>
-        <img src={chefimg} alt="img" className="w-[420px] block mx-auto" />
-        <h1 className="font-bold text-3xl text-teal-700 text-center">
-          404 ERROR
-        </h1>
-        <h2 className="font-bold text-2xl text-teal-700 text-center">
-          Oops!.. Recipe for your search not found
-        </h2>
-      </>
-    );
-  }
+const RecipeCard = ({ detail = [] }) => {
   return (
-    <div className="flex justify-evenly flex-wrap md:my-10 m-5 md:mx-20">
+    <div className="flex justify-evenly flex-wrap md:my-10 m-5 md:mx-5">
       {detail.map((recipeItem, i) => {
         const { strMealThumb, strMeal, idMeal } = recipeItem;
         return (
           <div
             key={i}
-            className="border-none bg-teal-100 mx-1 my-4 shadow-xl rounded-2xl"
+            className="border-none bg-teal-100 mx-1 my-4 shadow-xl rounded-2xl md:w-[350px]"
           >
             <img
               src={strMealThumb}
               alt="dishimg"
-              className="w-[350px] object-cover rounded-t-2xl"
+              className="md:w-[350px] md:h-[350px] w-[270px] h-[270px] object-contain rounded-t-2xl"
             />
-            <h2 className="font-bold text-xl my-3 text-teal-700 text-center">
+            <h2 className="font-bold text-xl my-2 mx-2 text-teal-700 text-center">
               {strMeal}
             </h2>
             <Link to={`/recipes/${idMeal}`}>
-              <Button
-                btntext={"Ckeck Recipe"}
-                btnposition={"center"}
-                onClick={() => {}}
-              />
+              <Button btntext="Check Recipe" btnposition="center" />
             </Link>
           </div>
         );
